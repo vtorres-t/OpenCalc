@@ -11,7 +11,6 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.MenuItem
 import android.view.View
@@ -46,6 +45,8 @@ import com.darkempire78.opencalculator.databinding.ActivityMainBinding
 import com.darkempire78.opencalculator.dialogs.DonationDialog
 import com.darkempire78.opencalculator.history.History
 import com.darkempire78.opencalculator.history.HistoryAdapter
+import com.darkempire78.opencalculator.util.ScientificMode
+import com.darkempire78.opencalculator.util.ScientificModeTypes
 import com.sothree.slidinguppanel.PanelSlideListener
 import com.sothree.slidinguppanel.PanelState
 import kotlinx.coroutines.Dispatchers
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         DecimalFormatSymbols.getInstance().groupingSeparator.toString()
 
     private var numberingSystem = NumberingSystem.INTERNATIONAL
+    private var scientificModeType = ScientificModeTypes.NOT_ACTIVE
 
     private var isInvButtonClicked = false
     private var isEqualLastAction = false
@@ -209,13 +211,6 @@ class MainActivity : AppCompatActivity() {
         // Prevent the phone from sleeping (if option enabled)
         if (MyPreferences(this).preventPhoneFromSleepingMode) {
             view.keepScreenOn = true
-        }
-
-        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
-            // scientific mode enabled by default in portrait mode (if option enabled)
-            if (MyPreferences(this).scientificMode) {
-                enableOrDisableScientistMode()
-            }
         }
 
         // use radians instead of degrees by default (if option enabled)
@@ -525,6 +520,7 @@ class MainActivity : AppCompatActivity() {
         return newResult
     }
 
+
     private fun enableOrDisableScientistMode() {
         if (binding.scientistModeRow2.visibility != View.VISIBLE) {
             binding.scientistModeRow2.visibility = View.VISIBLE
@@ -545,6 +541,44 @@ class MainActivity : AppCompatActivity() {
             binding.scientistModeSwitchButton?.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
             binding.degreeTextView.visibility = View.GONE
         }
+    }
+
+    private fun manageScientificMode(scientificModeTypes: ScientificModeTypes) {
+        when (scientificModeTypes) {
+            ScientificModeTypes.OFF -> hideScientificMode()
+            ScientificModeTypes.ACTIVE -> enableOrDisableScientistMode(true)
+            ScientificModeTypes.NOT_ACTIVE -> enableOrDisableScientistMode(false)
+        }
+    }
+
+
+    private fun enableOrDisableScientistMode(isEnabled: Boolean) {
+        if (isEnabled) {
+            binding.scientistModeRow2.visibility = View.VISIBLE
+            binding.scientistModeRow3.visibility = View.VISIBLE
+            binding.scientistModeSwitchButton?.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up_24)
+            binding.degreeTextView.visibility = View.VISIBLE
+            if (isDegreeModeActivated) {
+                binding.degreeButton.text = getString(R.string.radian)
+                binding.degreeTextView.text = getString(R.string.degree)
+            } else {
+                binding.degreeButton.text = getString(R.string.degree)
+                binding.degreeTextView.text = getString(R.string.radian)
+            }
+        } else {
+            binding.scientistModeRow2.visibility = View.GONE
+            binding.scientistModeRow3.visibility = View.GONE
+            binding.scientistModeSwitchButton?.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24)
+            binding.degreeTextView.visibility = View.GONE
+        }
+    }
+
+    private fun hideScientificMode() {
+        binding.scientistModeRow1?.visibility = View.GONE
+        binding.scientistModeRow2.visibility = View.GONE
+        binding.scientistModeRow3.visibility = View.GONE
+        binding.scientistModeSwitchButton?.visibility = View.GONE
+        binding.degreeTextView.visibility = View.GONE
     }
 
     // Switch between degree and radian mode
@@ -1220,7 +1254,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             val newValueFormatted =
-                NumberFormatter.format(newValue, decimalSeparatorSymbol, groupingSeparatorSymbol, numberingSystem)
+                NumberFormatter.format(
+                    newValue,
+                    decimalSeparatorSymbol,
+                    groupingSeparatorSymbol,
+                    numberingSystem
+                )
             var cursorOffset = newValueFormatted.length - newValue.length - rightSideCommas
             if (cursorOffset < 0) cursorOffset = 0
 
@@ -1247,6 +1286,13 @@ class MainActivity : AppCompatActivity() {
     // Update settings
     override fun onResume() {
         super.onResume()
+
+        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            // scientific mode enabled by default in portrait mode (if option enabled)
+            val storedType = MyPreferences(this).scientificMode
+            scientificModeType = ScientificMode.getScientificModeType(storedType)
+            manageScientificMode(scientificModeType)
+        }
 
         val fromPrefs = MyPreferences(this).numberingSystem
         numberingSystem = fromPrefs.toNumberingSystem()
@@ -1316,6 +1362,7 @@ class MainActivity : AppCompatActivity() {
 
         // Disable the keyboard on display EditText
         binding.input.showSoftInputOnFocus = false
+
     }
 
     fun checkEmptyHistoryForNoHistoryLabel() {

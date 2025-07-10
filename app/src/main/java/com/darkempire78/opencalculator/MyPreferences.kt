@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.preference.PreferenceManager
 import com.darkempire78.opencalculator.history.History
+import com.darkempire78.opencalculator.util.ScientificModeTypes
 import com.google.gson.Gson
 
 class MyPreferences(context: Context) {
@@ -40,8 +41,8 @@ class MyPreferences(context: Context) {
 
     var vibrationMode = preferences.getBoolean(KEY_VIBRATION_STATUS, true)
         set(value) = preferences.edit().putBoolean(KEY_VIBRATION_STATUS, value).apply()
-    var scientificMode = preferences.getBoolean(KEY_SCIENTIFIC_MODE_ENABLED_BY_DEFAULT, false)
-        set(value) = preferences.edit().putBoolean(KEY_SCIENTIFIC_MODE_ENABLED_BY_DEFAULT, value).apply()
+    var scientificMode = preferences.getInt(KEY_SCIENTIFIC_MODE_ENABLED_BY_DEFAULT, ScientificModeTypes.NOT_ACTIVE.ordinal)
+        set(value) = preferences.edit().putInt(KEY_SCIENTIFIC_MODE_ENABLED_BY_DEFAULT, value).apply()
     var useRadiansByDefault = preferences.getBoolean(KEY_RADIANS_INSTEAD_OF_DEGREES_BY_DEFAULT, false)
         set(value) = preferences.edit().putBoolean(KEY_RADIANS_INSTEAD_OF_DEGREES_BY_DEFAULT, value).apply()
     private var history = preferences.getString(KEY_HISTORY, null)

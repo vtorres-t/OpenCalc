@@ -18,7 +18,6 @@ import com.darkempire78.opencalculator.R
 import com.darkempire78.opencalculator.Themes
 import com.darkempire78.opencalculator.calculator.parser.NumberingSystem
 import com.darkempire78.opencalculator.util.ScientificMode
-import com.darkempire78.opencalculator.util.ScientificModeTypes
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.Locale
 

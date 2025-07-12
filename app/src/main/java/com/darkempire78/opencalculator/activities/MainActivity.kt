@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.MenuItem
 import android.view.View
@@ -1278,15 +1279,15 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+        val fromPrefs = MyPreferences(this).numberingSystem
+        numberingSystem = fromPrefs.toNumberingSystem()
+
         if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
             // scientific mode enabled by default in portrait mode (if option enabled)
             val storedType = MyPreferences(this).scientificMode
             scientificModeType = ScientificMode.getScientificModeType(storedType)
             manageScientificMode(scientificModeType)
         }
-
-        val fromPrefs = MyPreferences(this).numberingSystem
-        numberingSystem = fromPrefs.toNumberingSystem()
 
         // Update the theme
         val themes = Themes(this)

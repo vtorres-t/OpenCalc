@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.MenuItem
 import android.view.View
@@ -276,8 +277,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 updateResultDisplay()
-                textSizeAdjuster.adjustTextSize(
-                    binding.input,
+                textSizeAdjuster.adjustTextSize(binding.input,
                     TextSizeAdjuster.AdjustableTextType.Input
                 )
             }
@@ -287,7 +287,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        binding.resultDisplay.addTextChangedListener(object : TextWatcher {
+        binding.resultDisplay.addTextChangedListener(object: TextWatcher {
             private var beforeTextLength = 0
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -295,8 +295,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                textSizeAdjuster.adjustTextSize(
-                    binding.resultDisplay,
+                textSizeAdjuster.adjustTextSize(binding.resultDisplay,
                     TextSizeAdjuster.AdjustableTextType.Output
                 )
             }
@@ -328,12 +327,10 @@ class MainActivity : AppCompatActivity() {
                     updateDisplay(view, "00")
                     true
                 }
-
                 R.id.option_triple_zero -> {
                     updateDisplay(view, "000")
                     true
                 }
-
                 else -> false
             }
         }
@@ -351,7 +348,6 @@ class MainActivity : AppCompatActivity() {
             ): Boolean {
                 return false
             }
-
             override fun isItemViewSwipeEnabled(): Boolean {
                 return MyPreferences(this@MainActivity).deleteHistoryOnSwipe
             }
@@ -476,23 +472,13 @@ class MainActivity : AppCompatActivity() {
             val cursorPosition = binding.input.selectionStart
             val leftValue = formerValue.subSequence(0, cursorPosition).toString()
             val leftValueFormatted =
-                NumberFormatter.format(
-                    leftValue,
-                    decimalSeparatorSymbol,
-                    groupingSeparatorSymbol,
-                    numberingSystem
-                )
+                NumberFormatter.format(leftValue, decimalSeparatorSymbol, groupingSeparatorSymbol, numberingSystem)
             val rightValue = formerValue.subSequence(cursorPosition, formerValue.length).toString()
 
             val newValue = leftValue + value + rightValue
 
             val newValueFormatted =
-                NumberFormatter.format(
-                    newValue,
-                    decimalSeparatorSymbol,
-                    groupingSeparatorSymbol,
-                    numberingSystem
-                )
+                NumberFormatter.format(newValue, decimalSeparatorSymbol, groupingSeparatorSymbol, numberingSystem)
 
             withContext(Dispatchers.Main) {
                 // Update Display
@@ -505,8 +491,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     val desiredCursorPosition = leftValueFormatted.length + value.length
                     // Limit the cursor position to the length of the input
-                    val safeCursorPosition =
-                        desiredCursorPosition.coerceAtMost(binding.input.text.length)
+                    val safeCursorPosition = desiredCursorPosition.coerceAtMost(binding.input.text.length)
                     binding.input.setSelection(safeCursorPosition)
                 }
             }
@@ -537,7 +522,6 @@ class MainActivity : AppCompatActivity() {
         return newResult
     }
 
-
     private fun enableOrDisableScientistMode() {
         if (binding.scientistModeRow2.visibility != View.VISIBLE) {
             binding.scientistModeRow2.visibility = View.VISIBLE
@@ -547,7 +531,8 @@ class MainActivity : AppCompatActivity() {
             if (isDegreeModeActivated) {
                 binding.degreeButton.text = getString(R.string.radian)
                 binding.degreeTextView.text = getString(R.string.degree)
-            } else {
+            }
+            else {
                 binding.degreeButton.text = getString(R.string.degree)
                 binding.degreeTextView.text = getString(R.string.radian)
             }
@@ -599,7 +584,8 @@ class MainActivity : AppCompatActivity() {
         if (isDegreeModeActivated) {
             binding.degreeButton.text = getString(R.string.radian)
             binding.degreeTextView.text = getString(R.string.degree)
-        } else {
+        }
+        else {
             binding.degreeButton.text = getString(R.string.degree)
             binding.degreeTextView.text = getString(R.string.radian)
         }
@@ -686,19 +672,14 @@ class MainActivity : AppCompatActivity() {
                             if (isStillTheSameCalculation_autoSaveCalculationWithoutEqualOption) {
                                 // If it's the same calculation as the previous one
                                 // Get previous calculation and update it
-                                val previousHistoryElement =
-                                    MyPreferences(this@MainActivity).getHistoryElementById(
-                                        lastHistoryElementId
-                                    )
+                                val previousHistoryElement = MyPreferences(this@MainActivity).getHistoryElementById(
+                                    lastHistoryElementId
+                                )
                                 if (previousHistoryElement != null) {
                                     previousHistoryElement.calculation = calculation
                                     previousHistoryElement.result = formattedResult
-                                    previousHistoryElement.time =
-                                        System.currentTimeMillis().toString()
-                                    MyPreferences(this@MainActivity).updateHistoryElementById(
-                                        lastHistoryElementId,
-                                        previousHistoryElement
-                                    )
+                                    previousHistoryElement.time = System.currentTimeMillis().toString()
+                                    MyPreferences(this@MainActivity).updateHistoryElementById(lastHistoryElementId, previousHistoryElement)
                                     withContext(Dispatchers.Main) {
                                         historyAdapter.updateHistoryElement(previousHistoryElement)
                                     }
@@ -721,8 +702,7 @@ class MainActivity : AppCompatActivity() {
                                 )
 
                                 lastHistoryElementId = historyElementId
-                                isStillTheSameCalculation_autoSaveCalculationWithoutEqualOption =
-                                    true
+                                isStillTheSameCalculation_autoSaveCalculationWithoutEqualOption = true
 
                                 MyPreferences(this@MainActivity).saveHistory(history)
 
@@ -733,14 +713,12 @@ class MainActivity : AppCompatActivity() {
                                             calculation = calculation,
                                             result = formattedResult,
                                             time = currentTime,
-                                            id = UUID.randomUUID()
-                                                .toString() // Generate a random id
+                                            id = UUID.randomUUID().toString() // Generate a random id
                                         )
                                     )
 
                                     // Remove former results if > historySize preference
-                                    val historySize =
-                                        MyPreferences(this@MainActivity).historySize!!.toInt()
+                                    val historySize = MyPreferences(this@MainActivity).historySize!!.toInt()
                                     while (historySize != -1 && historyAdapter.itemCount >= historySize && historyAdapter.itemCount > 0) {
                                         historyAdapter.removeFirstHistoryElement()
                                     }
@@ -755,10 +733,9 @@ class MainActivity : AppCompatActivity() {
 
                 } else withContext(Dispatchers.Main) {
                     if (is_infinity && !division_by_0 && !domain_error && !require_real_number) {
-                        if (calculationResult < BigDecimal.ZERO) binding.resultDisplay.text =
-                            "-" + getString(
-                                R.string.infinity
-                            )
+                        if (calculationResult < BigDecimal.ZERO) binding.resultDisplay.text = "-" + getString(
+                            R.string.infinity
+                        )
                         else binding.resultDisplay.text = getString(R.string.value_too_large)
                     } else {
                         withContext(Dispatchers.Main) {
@@ -808,10 +785,8 @@ class MainActivity : AppCompatActivity() {
                 if (previousChar.matches("[+\\-÷×^]".toRegex())) {
                     keyVibration(view)
 
-                    val leftString =
-                        binding.input.text.subSequence(0, cursorPosition - 1).toString()
-                    val rightString =
-                        binding.input.text.subSequence(cursorPosition, textLength).toString()
+                    val leftString = binding.input.text.subSequence(0, cursorPosition - 1).toString()
+                    val rightString = binding.input.text.subSequence(cursorPosition, textLength).toString()
 
                     // Add a parenthesis if there is another symbol before minus
                     if (currentSymbol == "-") {
@@ -837,8 +812,7 @@ class MainActivity : AppCompatActivity() {
                     keyVibration(view)
 
                     val leftString = binding.input.text.subSequence(0, cursorPosition).toString()
-                    val rightString =
-                        binding.input.text.subSequence(cursorPosition + 1, textLength).toString()
+                    val rightString = binding.input.text.subSequence(cursorPosition + 1, textLength).toString()
 
                     if (cursorPosition > 0 && previousChar != "(") {
                         binding.input.setText(leftString + currentSymbol + rightString)
@@ -886,8 +860,7 @@ class MainActivity : AppCompatActivity() {
                 startPosition = cursorPosition
                 while (startPosition > 0 && (binding.input.text[startPosition - 1].isDigit()
                             || binding.input.text[startPosition - 1].toString() == decimalSeparatorSymbol
-                            || binding.input.text[startPosition - 1].toString() == groupingSeparatorSymbol)
-                ) {
+                            || binding.input.text[startPosition - 1].toString() == groupingSeparatorSymbol)) {
                     startPosition -= 1
                 }
             }
@@ -899,10 +872,9 @@ class MainActivity : AppCompatActivity() {
                 while (endPosition < binding.input.text.length
                     && (binding.input.text[endPosition].isDigit()
                             || binding.input.text[endPosition].toString() == decimalSeparatorSymbol
-                            || binding.input.text[endPosition].toString() == groupingSeparatorSymbol)
-                ) {
-                    endPosition += 1
-                }
+                            || binding.input.text[endPosition].toString() == groupingSeparatorSymbol)) {
+                        endPosition += 1
+                    }
             }
             currentNumber = binding.input.text.substring(startPosition, endPosition)
         }
@@ -1132,8 +1104,7 @@ class MainActivity : AppCompatActivity() {
                                 )
 
                                 // Remove former results if > historySize preference
-                                val historySize =
-                                    MyPreferences(this@MainActivity).historySize!!.toInt()
+                                val historySize = MyPreferences(this@MainActivity).historySize!!.toInt()
                                 while (historySize != -1 && historyAdapter.itemCount >= historySize && historyAdapter.itemCount > 0) {
                                     historyAdapter.removeFirstHistoryElement()
                                 }
@@ -1159,10 +1130,9 @@ class MainActivity : AppCompatActivity() {
                             setErrorColor(true)
                             binding.resultDisplay.text = getString(R.string.division_by_0)
                         } else if (is_infinity) {
-                            if (calculationResult < BigDecimal.ZERO) binding.resultDisplay.text =
-                                "-" + getString(
-                                    R.string.infinity
-                                )
+                            if (calculationResult < BigDecimal.ZERO) binding.resultDisplay.text = "-" + getString(
+                                R.string.infinity
+                            )
                             else binding.resultDisplay.text = getString(R.string.value_too_large)
                             //} else if (result.isNaN()) {
                             //    setErrorColor(true)
@@ -1238,18 +1208,7 @@ class MainActivity : AppCompatActivity() {
         if (cursorPosition != 0 && textLength != 0) {
             // Check if it is a function to delete
             val functionsList =
-                listOf(
-                    "cos⁻¹(",
-                    "sin⁻¹(",
-                    "tan⁻¹(",
-                    "cos(",
-                    "sin(",
-                    "tan(",
-                    "ln(",
-                    "log(",
-                    "log₂(",
-                    "exp("
-                )
+                listOf("cos⁻¹(", "sin⁻¹(", "tan⁻¹(", "cos(", "sin(", "tan(", "ln(", "log(", "log₂(", "exp(")
             for (function in functionsList) {
                 val leftPart = binding.input.text.subSequence(0, cursorPosition).toString()
                 if (leftPart.endsWith(function)) {
@@ -1292,12 +1251,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             val newValueFormatted =
-                NumberFormatter.format(
-                    newValue,
-                    decimalSeparatorSymbol,
-                    groupingSeparatorSymbol,
-                    numberingSystem
-                )
+                NumberFormatter.format(newValue, decimalSeparatorSymbol, groupingSeparatorSymbol, numberingSystem)
             var cursorOffset = newValueFormatted.length - newValue.length - rightSideCommas
             if (cursorOffset < 0) cursorOffset = 0
 
@@ -1313,12 +1267,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateInputDisplay() {
         val expression = binding.input.text.toString()
-        val formatted = NumberFormatter.format(
-            expression,
-            decimalSeparatorSymbol,
-            groupingSeparatorSymbol,
-            numberingSystem
-        )
+        val formatted = NumberFormatter.format(expression, decimalSeparatorSymbol, groupingSeparatorSymbol, numberingSystem)
         val cursorPosition = binding.input.selectionStart
         binding.input.setText(formatted)
         // Set cursor to previous location before resume.
@@ -1336,6 +1285,7 @@ class MainActivity : AppCompatActivity() {
             scientificModeType = ScientificMode.getScientificModeType(storedType)
             manageScientificMode(scientificModeType)
         }
+
 
         val fromPrefs = MyPreferences(this).numberingSystem
         numberingSystem = fromPrefs.toNumberingSystem()
@@ -1405,14 +1355,13 @@ class MainActivity : AppCompatActivity() {
 
         // Disable the keyboard on display EditText
         binding.input.showSoftInputOnFocus = false
-
     }
 
     fun checkEmptyHistoryForNoHistoryLabel() {
-        if (historyAdapter.itemCount == 0) {
+        if (historyAdapter.itemCount==0) {
             binding.historyRecylcleView.visibility = View.GONE
             binding.noHistoryText.visibility = View.VISIBLE
-        } else {
+        }else {
             binding.noHistoryText.visibility = View.GONE
             binding.historyRecylcleView.visibility = View.VISIBLE
         }

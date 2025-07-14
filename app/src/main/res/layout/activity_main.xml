@@ -48,6 +48,27 @@
 
     </HorizontalScrollView>
 
+    <!-- <EditText
+        android:id="@+id/resultDisplay"
+        style="@style/RobotoFontCondensedMedium"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollHorizontally="true"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:singleLine="true"
+        android:background="?attr/foreground_color"
+        android:inputType="textNoSuggestions"
+        android:text=""
+        android:textColor="?attr/text_second_color"
+        android:layout_weight="1"
+        android:textAlignment="textEnd"
+        android:textSize="35sp"
+        android:paddingHorizontal="10dp"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline1" /> -->
 
     <HorizontalScrollView
         android:id="@+id/resultDisplayHorizontalScrollView"

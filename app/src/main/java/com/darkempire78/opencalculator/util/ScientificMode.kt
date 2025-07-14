@@ -23,7 +23,7 @@ object ScientificMode {
     }
 }
 enum class ScientificModeTypes{
-    NOT_ACTIVE,
-    ACTIVE,
-    OFF
+    NOT_ACTIVE, //0
+    ACTIVE,//1
+    OFF //2
 }

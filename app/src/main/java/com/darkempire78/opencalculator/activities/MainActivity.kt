@@ -544,40 +544,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun manageScientificMode(scientificModeTypes: ScientificModeTypes) {
-        when (scientificModeTypes) {
-            ScientificModeTypes.OFF -> hideScientificMode()
-            ScientificModeTypes.ACTIVE -> enableOrDisableScientistMode(true)
-            ScientificModeTypes.NOT_ACTIVE -> enableOrDisableScientistMode(false)
-        }
-    }
-
-
-    private fun enableOrDisableScientistMode(isEnabled: Boolean) {
-        val imageId = if (isEnabled) R.drawable.ic_baseline_keyboard_arrow_up_24 else R.drawable.ic_baseline_keyboard_arrow_down_24
-        binding.scientistModeRow1?.isVisible = true
-        binding.scientistModeRow2.isVisible = isEnabled
-        binding.scientistModeRow3.isVisible = isEnabled
-        binding.degreeTextView.visibility = View.VISIBLE
-        binding.scientistModeSwitchButton?.setImageResource(imageId)
-
-        if (isDegreeModeActivated) {
-            binding.degreeButton.text = getString(R.string.radian)
-            binding.degreeTextView.text = getString(R.string.degree)
-        } else {
-            binding.degreeButton.text = getString(R.string.degree)
-            binding.degreeTextView.text = getString(R.string.radian)
-        }
-
-    }
-
-    private fun hideScientificMode() {
-        binding.scientistModeRow1?.visibility = View.GONE
-        binding.scientistModeRow2.visibility = View.GONE
-        binding.scientistModeRow3.visibility = View.GONE
-        binding.degreeTextView.visibility = View.GONE
-    }
-
     // Switch between degree and radian mode
     private fun toggleDegreeMode() {
         isDegreeModeActivated = !isDegreeModeActivated
@@ -1365,5 +1331,39 @@ class MainActivity : AppCompatActivity() {
             binding.noHistoryText.visibility = View.GONE
             binding.historyRecylcleView.visibility = View.VISIBLE
         }
+    }
+
+    private fun manageScientificMode(scientificModeTypes: ScientificModeTypes) {
+        when (scientificModeTypes) {
+            ScientificModeTypes.OFF -> hideScientificMode()
+            ScientificModeTypes.ACTIVE -> enableOrDisableScientistMode(true)
+            ScientificModeTypes.NOT_ACTIVE -> enableOrDisableScientistMode(false)
+        }
+    }
+
+
+    private fun enableOrDisableScientistMode(isEnabled: Boolean) {
+        val imageId = if (isEnabled) R.drawable.ic_baseline_keyboard_arrow_up_24 else R.drawable.ic_baseline_keyboard_arrow_down_24
+        binding.scientistModeRow1?.isVisible = true
+        binding.scientistModeRow2.isVisible = isEnabled
+        binding.scientistModeRow3.isVisible = isEnabled
+        binding.degreeTextView.visibility = View.VISIBLE
+        binding.scientistModeSwitchButton?.setImageResource(imageId)
+
+        if (isDegreeModeActivated) {
+            binding.degreeButton.text = getString(R.string.radian)
+            binding.degreeTextView.text = getString(R.string.degree)
+        } else {
+            binding.degreeButton.text = getString(R.string.degree)
+            binding.degreeTextView.text = getString(R.string.radian)
+        }
+
+    }
+
+    private fun hideScientificMode() {
+        binding.scientistModeRow1?.visibility = View.GONE
+        binding.scientistModeRow2.visibility = View.GONE
+        binding.scientistModeRow3.visibility = View.GONE
+        binding.degreeTextView.visibility = View.GONE
     }
 }

@@ -96,7 +96,7 @@
     <string name="settings_general_radians_desc">Use radians instead of degrees by default</string>
 
     <string name="settings_general_scientific_mode">Scientific mode</string>
-    <string name="settings_general_scientific_mode_desc">Activate scientific mode by default</string>
+    <string name="settings_general_scientific_mode_desc">Activate scientific mode</string>
 
     <string name="settings_general_split_parenthesis_button">Split the parentheses button into two buttons</string>
     <string name="settings_general_split_parenthesis_button_desc">Remove the \"AC\" button to split the parentheses button into two buttons</string>

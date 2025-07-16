@@ -150,6 +150,29 @@ class SettingsActivity : AppCompatActivity() {
             dialog.show()
         }
 
+        private fun reloadActivity(context: Context) {
+            (context as Activity).finish()
+            ContextCompat.startActivity(context, context.intent, null)
+        }
+
+        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+        fun launchChangeAppLanguageIntent() {
+            try {
+                Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
+                    data = Uri.fromParts("package", requireContext().packageName, null)
+                    startActivity(this)
+                }
+            } catch (e: Exception) {
+                try {
+                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                        data = Uri.fromParts("package", requireContext().packageName, null)
+                        startActivity(this)
+                    }
+                } catch (e: Exception) {
+                    println(e)
+                }
+            }
+        }
         private fun openDialogScientificModeSelector(context: Context) {
 
             val preferences = MyPreferences(context)
@@ -188,29 +211,6 @@ class SettingsActivity : AppCompatActivity() {
             }
             val dialog = builder.create()
             dialog.show()
-        }
-        private fun reloadActivity(context: Context) {
-            (context as Activity).finish()
-            ContextCompat.startActivity(context, context.intent, null)
-        }
-
-        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-        fun launchChangeAppLanguageIntent() {
-            try {
-                Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
-                    data = Uri.fromParts("package", requireContext().packageName, null)
-                    startActivity(this)
-                }
-            } catch (e: Exception) {
-                try {
-                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                        data = Uri.fromParts("package", requireContext().packageName, null)
-                        startActivity(this)
-                    }
-                } catch (e: Exception) {
-                    println(e)
-                }
-            }
         }
     }
 }

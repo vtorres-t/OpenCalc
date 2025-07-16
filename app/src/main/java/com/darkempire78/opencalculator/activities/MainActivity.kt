@@ -24,6 +24,7 @@ import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,6 +47,8 @@ import com.darkempire78.opencalculator.databinding.ActivityMainBinding
 import com.darkempire78.opencalculator.dialogs.DonationDialog
 import com.darkempire78.opencalculator.history.History
 import com.darkempire78.opencalculator.history.HistoryAdapter
+import com.darkempire78.opencalculator.util.ScientificMode
+import com.darkempire78.opencalculator.util.ScientificModeTypes
 import com.sothree.slidinguppanel.PanelSlideListener
 import com.sothree.slidinguppanel.PanelState
 import kotlinx.coroutines.Dispatchers
@@ -70,6 +73,7 @@ class MainActivity : AppCompatActivity() {
         DecimalFormatSymbols.getInstance().groupingSeparator.toString()
 
     private var numberingSystem = NumberingSystem.INTERNATIONAL
+    private var scientificModeType = ScientificModeTypes.NOT_ACTIVE
 
     private var isInvButtonClicked = false
     private var isEqualLastAction = false
@@ -209,13 +213,6 @@ class MainActivity : AppCompatActivity() {
         // Prevent the phone from sleeping (if option enabled)
         if (MyPreferences(this).preventPhoneFromSleepingMode) {
             view.keepScreenOn = true
-        }
-
-        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
-            // scientific mode enabled by default in portrait mode (if option enabled)
-            if (MyPreferences(this).scientificMode) {
-                enableOrDisableScientistMode()
-            }
         }
 
         // use radians instead of degrees by default (if option enabled)
@@ -1248,6 +1245,14 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            // scientific mode enabled by default in portrait mode (if option enabled)
+            val storedType = MyPreferences(this).scientificMode
+            scientificModeType = ScientificMode.getScientificModeType(storedType)
+            manageScientificMode(scientificModeType)
+        }
+
+
         val fromPrefs = MyPreferences(this).numberingSystem
         numberingSystem = fromPrefs.toNumberingSystem()
 
@@ -1326,5 +1331,39 @@ class MainActivity : AppCompatActivity() {
             binding.noHistoryText.visibility = View.GONE
             binding.historyRecylcleView.visibility = View.VISIBLE
         }
+    }
+
+    private fun manageScientificMode(scientificModeTypes: ScientificModeTypes) {
+        when (scientificModeTypes) {
+            ScientificModeTypes.OFF -> hideScientificMode()
+            ScientificModeTypes.ACTIVE -> enableOrDisableScientistMode(true)
+            ScientificModeTypes.NOT_ACTIVE -> enableOrDisableScientistMode(false)
+        }
+    }
+
+
+    private fun enableOrDisableScientistMode(isEnabled: Boolean) {
+        val imageId = if (isEnabled) R.drawable.ic_baseline_keyboard_arrow_up_24 else R.drawable.ic_baseline_keyboard_arrow_down_24
+        binding.scientistModeRow1?.isVisible = true
+        binding.scientistModeRow2.isVisible = isEnabled
+        binding.scientistModeRow3.isVisible = isEnabled
+        binding.degreeTextView.visibility = View.VISIBLE
+        binding.scientistModeSwitchButton?.setImageResource(imageId)
+
+        if (isDegreeModeActivated) {
+            binding.degreeButton.text = getString(R.string.radian)
+            binding.degreeTextView.text = getString(R.string.degree)
+        } else {
+            binding.degreeButton.text = getString(R.string.degree)
+            binding.degreeTextView.text = getString(R.string.radian)
+        }
+
+    }
+
+    private fun hideScientificMode() {
+        binding.scientistModeRow1?.visibility = View.GONE
+        binding.scientistModeRow2.visibility = View.GONE
+        binding.scientistModeRow3.visibility = View.GONE
+        binding.degreeTextView.visibility = View.GONE
     }
 }

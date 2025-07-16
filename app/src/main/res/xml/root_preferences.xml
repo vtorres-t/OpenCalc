@@ -54,15 +54,15 @@
             app:defaultValue="false"
             app:widgetLayout="@drawable/material_switch" />
 
-        <SwitchPreferenceCompat
+        <Preference
+            android:id="@+id/settings_select_scientificMode_system"
             app:key="darkempire78.opencalculator.SCIENTIFIC_MODE_ENABLED_BY_DEFAULT"
+            app:selectable="true"
+            app:enabled="true"
             app:title="@string/settings_general_scientific_mode"
             app:summary="@string/settings_general_scientific_mode_desc"
-            app:useSimpleSummaryProvider="true"
-            app:icon="@drawable/science"
-            app:singleLineTitle="false"
-            app:defaultValue="false"
-            app:widgetLayout="@drawable/material_switch" />
+            app:icon="@drawable/science" />
+
 
         <SwitchPreferenceCompat
             app:key="darkempire78.opencalculator.SPLIT_PARENTHESIS_BUTTON"

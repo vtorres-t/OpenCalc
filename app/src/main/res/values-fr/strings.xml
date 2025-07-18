@@ -24,6 +24,8 @@
     <string name="settings_advanced_prevent_sleep">Empêcher le téléphone de se mettre en veille</string>
     <string name="settings_category_advanced">AVANCÉ</string>
     <string name="settings_general_scientific_mode_desc">Activer le mode scientifique par défaut</string>
+    <string name="settings_general_scientific_mode_deactivate_desc">Désactiver le mode scientifique</string>
+    <string name="settings_general_scientific_mode_hide_desc">Masquer le mode scientifique</string>
     <string name="settings_general_scientific_mode">Mode scientifique</string>
     <string name="settings_general_radians">Radians</string>
     <string name="settings_general_radians_desc">Utiliser les radians à la place des degrés par défaut</string>

@@ -69,7 +69,7 @@ class MyPreferences(context: Context) {
     var autoSaveCalculationWithoutEqualButton = preferences.getBoolean(KEY_AUTO_SAVE_CALCULATION_WITHOUT_EQUAL_BUTTON, true)
         set(value) = preferences.edit().putBoolean(KEY_AUTO_SAVE_CALCULATION_WITHOUT_EQUAL_BUTTON, value).apply()
 
-    var moveBackButtonLeft = preferences.getBoolean(KEY_MOVE_BACK_BUTTON_LEFT, true)
+    var moveBackButtonLeft = preferences.getBoolean(KEY_MOVE_BACK_BUTTON_LEFT, false)
         set(value) = preferences.edit().putBoolean(KEY_MOVE_BACK_BUTTON_LEFT, value).apply()
 
     var numberingSystem = preferences.getInt(KEY_NUMBERING_SYSTEM, 0)

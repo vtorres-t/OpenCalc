@@ -117,19 +117,7 @@ class MainActivity : AppCompatActivity() {
         view = binding.root
 
         // Fix view for SDK 35
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            v.updatePadding(
-                left = systemBars.left,
-                top = systemBars.top,
-                right = systemBars.right,
-                bottom = systemBars.bottom
-            )
-
-            // Return the insets to allow other listeners to consume them
-            insets
-        }
+        fixView()
 
         setContentView(view)
 
@@ -1318,20 +1306,7 @@ class MainActivity : AppCompatActivity() {
             manageScientificMode(scientificModeType)
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            v.updatePadding(
-                left = systemBars.left,
-                top = systemBars.top,
-                right = systemBars.right,
-                bottom = systemBars.bottom
-            )
-
-            // Return the insets to allow other listeners to consume them
-            insets
-        }
-
+        fixView()
 
         val fromPrefs = MyPreferences(this).numberingSystem
         numberingSystem = fromPrefs.toNumberingSystem()
@@ -1452,5 +1427,22 @@ class MainActivity : AppCompatActivity() {
         binding.scientistModeRow2.visibility = View.GONE
         binding.scientistModeRow3.visibility = View.GONE
         binding.degreeTextView.visibility = View.GONE
+    }
+
+    // Method to add padding to app window to accommodate system bars
+    fun fixView() {
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            v.updatePadding(
+                left = systemBars.left,
+                top = systemBars.top,
+                right = systemBars.right,
+                bottom = systemBars.bottom
+            )
+
+            // Return the insets to allow other listeners to consume them
+            insets
+        }
     }
 }

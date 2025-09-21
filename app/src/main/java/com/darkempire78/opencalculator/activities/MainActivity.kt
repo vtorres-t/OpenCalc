@@ -1318,6 +1318,20 @@ class MainActivity : AppCompatActivity() {
             manageScientificMode(scientificModeType)
         }
 
+        ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            v.updatePadding(
+                left = systemBars.left,
+                top = systemBars.top,
+                right = systemBars.right,
+                bottom = systemBars.bottom
+            )
+
+            // Return the insets to allow other listeners to consume them
+            insets
+        }
+
 
         val fromPrefs = MyPreferences(this).numberingSystem
         numberingSystem = fromPrefs.toNumberingSystem()

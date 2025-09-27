@@ -50,61 +50,11 @@ class AboutActivity : AppCompatActivity() {
             finish()
         }
 
-        // Translate
-        binding.aboutTranslate.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://hosted.weblate.org/engage/opencalc/")
-            )
-            startActivity(browserIntent)
-        }
-
-        // Rate
-        binding.aboutRate.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://play.google.com/store/apps/details?id=com.darkempire78.opencalculator")
-            )
-            startActivity(browserIntent)
-        }
-
-        // Donation
-        /*binding.aboutDonate.setOnClickListener {
-            DonationDialog(this, layoutInflater).openDonationDialog()
-        }*/
-
         // Github
         binding.aboutGithub.setOnClickListener {
             val browserIntent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("https://github.com/Darkempire78/OpenCalc")
-            )
-            startActivity(browserIntent)
-        }
-
-        // Discord
-        binding.aboutDiscord.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://discord.com/invite/sPvJmY7mcV")
-            )
-            startActivity(browserIntent)
-        }
-
-        // Privacy policy
-        binding.aboutPrivacyPolicy.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://gist.githubusercontent.com/clementwzk/1688314e8b75d5d32ac0503a97ec77a0/raw/2dcc4cf13f9755405e486e51e4658626c289986a/OpenCalc%2520Privacy%2520Policy.md")
-            )
-            startActivity(browserIntent)
-        }
-
-        // License
-        binding.aboutLicense.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://github.com/Darkempire78/OpenCalc/blob/main/LICENSE")
+                Uri.parse("https://github.com/vtorres-t/OpenCalc")
             )
             startActivity(browserIntent)
         }

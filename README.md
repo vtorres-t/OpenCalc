@@ -10,6 +10,9 @@
 <a href="https://github.com/Darkempire78/OpenCalc/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/Darkempire78/OpenCalc.svg?logo=github&style=for-the-badge">
 </a>
+<a href="https://shields.rbtlog.dev/com.darkempire78.opencalculator">
+      <img alt="RB Status" src="https://shields.rbtlog.dev/simple/com.darkempire78.opencalculator?style=for-the-badge">
+</a>
 <a href="https://github.com/Darkempire78/OpenCalc/releases">
       <img alt="Releases" src="https://img.shields.io/github/downloads/Darkempire78/OpenCalc/total?color=blue&label=downloads&style=for-the-badge">
 </a>

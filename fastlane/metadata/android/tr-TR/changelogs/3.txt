@@ -1,8 +1,0 @@
-Yeni:
-- Titreşim sistemi
-
-Değişiklik:
-- Kod iyileştirmeleri
-
-Düzeltme:
-- İlk açılışta sistem temasını kullan

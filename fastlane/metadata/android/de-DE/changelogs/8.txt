@@ -1,2 +1,0 @@
-Fehlerbehebungen:
-- Absturz bei großen Zahlen behoben

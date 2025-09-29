@@ -1,8 +1,0 @@
-Nieuw:
-- Geschiedenis
-
-Verandering:
-- Optimisatie
-
-Opgelost:
-- Probleem bij het weergave van het resultaat

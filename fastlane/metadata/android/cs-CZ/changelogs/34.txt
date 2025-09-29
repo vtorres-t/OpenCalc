@@ -1,7 +1,0 @@
-Aktualizace:
-- Zobrazit "moc velká hodnota" místo "nekonečno"
-
-Opravy:
-- Dělení zápornými čísly
-- Problém s faktoriální funkcí
-- sin(x!) & cos(x!) dává špatné výsledky

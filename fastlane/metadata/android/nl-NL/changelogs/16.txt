@@ -1,4 +1,0 @@
-Opgelost:
-- Schollen van invoerbalk
-- Noodzakelijk scrollen om resultaat te zien
-- Invoer wissen als getal wordt ingevoerd na gelijkteken

@@ -1,7 +1,0 @@
-Novinky:
-- Dlouhé kliknutí ke kopírování hodnoty
-- Indonéský překlad
-
-Opravy:
-- skrolování při režimu na šířku
-- problém se zaměřením

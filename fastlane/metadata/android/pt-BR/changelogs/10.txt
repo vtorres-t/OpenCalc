@@ -1,5 +1,0 @@
-Mudanças:
-- adicionado separadores para números grandes
-- adicionada tradução italiana
-- adicionada tradução árabe
-- adicionda tradução turca

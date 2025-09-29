@@ -1,5 +1,0 @@
-Yeni:
-- Ayarlar sayfası
-
-Güncellendi:
-- Hakkında sayfası

@@ -1,5 +1,0 @@
-Mới:
-- Ô Cài đặt nhanh
-
-Sửa lỗi:
-- Thông báo (Toast) phiền phức

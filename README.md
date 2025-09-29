@@ -37,16 +37,6 @@
 
 * Android 5.0+
 
-## 📷 Screenshots
-
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Light Theme 1.png" width="15%"/>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Light Theme 2.png" width="15%"/>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Dark Theme 1.png" width="15%"/>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Dark Theme 2.png" width="15%"/>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Amoled Theme 1.png" width="15%"/>
-<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Amoled Theme 2.png" width="15%"/>
-
-
 ## 🔨 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

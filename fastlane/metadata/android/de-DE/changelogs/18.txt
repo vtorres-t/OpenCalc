@@ -1,7 +1,0 @@
-Neu:
-- Lange drücken um Wert zu kopieren
-- Indonesische Übersetzung
-
-Fehlerbehebungen:
-- Scrollen im Querformat
-- Fokus Fehler

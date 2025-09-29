@@ -1,6 +1,0 @@
-Veranderingen:
-- Startscherm is nu donker
-
-Opgelost:
-- probleem met toetsenbord
-- schollen van toetsenbord

@@ -1,8 +1,0 @@
-Nouveauté :
-- Historique
-
-Changement :
-- Optimisation
-
-Correction :
-- Le résultat affiche les erreurs

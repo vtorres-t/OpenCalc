@@ -1,3 +1,0 @@
-Nouveautés :
-- Thème Amoled
-- Correspondance avec le thème du système

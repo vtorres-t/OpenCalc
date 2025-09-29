@@ -1,5 +1,0 @@
-Cambiamentos:
-- addite separatores pro numeros longe
-- addite traduction al Italian
-- addite traduction al Arabe
-- addite traduction al Turco

@@ -1,4 +1,0 @@
-Perbaikan: 
-- Bilah gulir input 
-- Gulir yang diperlukan untuk melihat hasil 
-- Hapus inputan jika tombol angka ditekan setelah sama dengan

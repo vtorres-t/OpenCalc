@@ -1,7 +1,0 @@
-Atualizado:
-- Exibição de “valor muito grande” em vez de “infinito”
-
-Correções:
-- Divisão por números negativos
-- Problema com a função fatorial
-- sin(x!) e cos(x!) dão resultados errados

@@ -1,8 +1,0 @@
-Uutta:
-- Värinäjärjestelmä
-
-Muutokset:
-- Koodin parannus
-
-Korjaukset:
-- Seuraa järjestelmän teemaa ensimmäisellä käynnistyksellä

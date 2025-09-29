@@ -1,7 +1,0 @@
-Athruithe:
-- nua faoin leathanach
-- cuir deighilteoir leis an téama amúite
-
-Ceartúcháin:
-- dath ticbhosca
-- ainm na haipe (aistrithe in EN & FR)

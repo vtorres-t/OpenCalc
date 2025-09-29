@@ -1,4 +1,0 @@
-Tuzatishlar:
-- Kirish aylantirish paneli
-- Natijani ko'rish uchun kerakli siljiting
-- Agar raqam teng bo'lgandan keyin bosilsa, kiritishni o'chirish

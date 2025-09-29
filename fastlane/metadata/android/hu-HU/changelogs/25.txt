@@ -1,8 +1,0 @@
-Új:
-- Spanyol fordítás
-
-Javítások:
-- A billentyűzet nem reagál a nagy faktoriálisokkal való közvetlen műveletek során.
-- Az értékek hibás betöltése az előzményekből
-- A tizedesvesszővel ellátott eredmények betöltése az előzményekből eltávolítja az operátorokat, vagy összeomlik az alkalmazás.
-- Pontosság

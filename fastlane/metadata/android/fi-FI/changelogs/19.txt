@@ -1,8 +1,0 @@
-Uutta:
-- Toast, kun kopioit arvon
-
-Korjaukset:
-- Follow system theme supports Material You
-- Paranna tukea tabletille
-- Paranna tukea pienille näyttöko'oille
-- Kuvaketta ei näytetä alhaisemmille Andoid-versioille, kuin 8

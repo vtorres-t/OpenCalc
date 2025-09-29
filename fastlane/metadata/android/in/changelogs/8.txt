@@ -1,2 +1,0 @@
-Perbaikan:
-- Perbaiki galat pada operasi nilai besar

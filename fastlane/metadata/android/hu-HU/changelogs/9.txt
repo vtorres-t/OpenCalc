@@ -1,7 +1,0 @@
-Változások:
-- új névjegylap
-- elválasztó hozzáadása az amoled témához
-
-Javítások:
-- a jelölőnégyzet színe
-- az alkalmazás neve (lefordítva EN és FR nyelvre)

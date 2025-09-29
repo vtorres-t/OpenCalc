@@ -1,5 +1,0 @@
-Tambahan:
-- Bilah Pengaturan Cepat
-
-Perbaikan:
-- Toast yang mengganggu

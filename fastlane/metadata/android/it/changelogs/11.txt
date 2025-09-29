@@ -1,9 +1,0 @@
-Modifiche:
-- Traduzione in Tedesco
-- Traduzione in Russo
-- Traduzione in Greco
-- Traduzione in Hindi
-- Traduzione in Azerbajiano
-
-Correzioni:
-- Percentuale non matematica

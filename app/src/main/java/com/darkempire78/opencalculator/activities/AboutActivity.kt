@@ -14,7 +14,6 @@ import com.darkempire78.opencalculator.MyPreferences
 import com.darkempire78.opencalculator.R
 import com.darkempire78.opencalculator.Themes
 import com.darkempire78.opencalculator.databinding.ActivityAboutBinding
-import com.darkempire78.opencalculator.dialogs.DonationDialog
 
 class AboutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAboutBinding

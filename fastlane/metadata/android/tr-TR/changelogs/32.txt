@@ -1,2 +1,0 @@
-Düzeltmeler:
-- Küçük ekranlarda ve tabletlerde çökme

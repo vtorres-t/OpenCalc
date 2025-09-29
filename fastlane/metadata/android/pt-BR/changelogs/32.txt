@@ -1,2 +1,0 @@
-Corrigido:
-- Travamento em pequenas telas e tablets

@@ -1,8 +1,0 @@
-Uutta:
-- Selkeät virheet
-- Historian uudelleensuunnittelu
-- Lisää aikaleimat historian tuloksiin
-- Älä salli päällekkäisiä matemaattisia symboleja syötteessä
-
-Päivitetty:
-- arccos, arcsin ja arctan näytetään nyt muodossa cos⁻¹, sin⁻¹ ja tan⁻¹

@@ -1,8 +1,0 @@
-Novità:
-- Cronologia
-
-Cambiamenti:
-- Ottimizzazione
-
-Correzioni:
-- Problemi con la visualizzazione del risultato

@@ -1,8 +1,0 @@
-Uutta:
-- Historia
-
-Muutokset:
-- Optimointi
-
-Korjaukset:
-- Tuloksen näyttöongelmat

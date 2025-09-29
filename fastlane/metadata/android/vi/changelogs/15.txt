@@ -1,6 +1,0 @@
-Các thay đổi:
-- Màn hình splash (là màn hình chờ có logo xuất hiện khi bạn khởi chạy ứng dụng) bây giờ có chế độ tối
-
-Sửa lỗi:
-- vấn đề về bàn phím
-- bàn phím vẫn cuộn

@@ -1,4 +1,0 @@
-Correzioni:
-- Parentesi a chiusura automatica
-- Moltiplicazione fattoriali senza *
-- Aggiunta automatica di 0 quando un numero inizia con un separatore decimale

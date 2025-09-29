@@ -1,7 +1,0 @@
-Új:
-- Hosszú érintés egy érték másolásához
-- Indonéz fordítás
-
-Javítások:
-- görgetés fekvő nézetben
-- fókuszprobléma

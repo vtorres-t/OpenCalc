@@ -1,8 +1,0 @@
-Novo:
-- Aviso quando você copia um valor
-
-Correções:
-- Usar o tema do sistema suporta o Material You
-- Melhora do suporte para tablet
-- Melhora do suporte para telas pequenas
-- Ícone não exibido para Android inferior a 8

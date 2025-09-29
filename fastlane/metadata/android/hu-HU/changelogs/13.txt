@@ -1,6 +1,0 @@
-Új:
-- Színezett ikon
-
-Változások:
-- Fordítások frissítése
-- A bemenet törlése, ha egy számot az egyenlőségjel után nyomnak meg

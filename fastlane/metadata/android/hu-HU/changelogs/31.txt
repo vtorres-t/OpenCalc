@@ -1,9 +1,0 @@
-Frissítve:
-- A szöveg színének megváltozása hiba esetén
-- Az alkalmazás méretének csökkentése
-- Nem menti az eredményt az előzmények közé, ha az megegyezik a számítással
-- Nem menti a számítást az előzmények közé, ha az megegyezik a legutolsóval
-
-Javítások:
-- A 0 faktoriális eredménye 1
-- Matematikai szimbólum hozzáadása az egyenlő gomb megnyomása után

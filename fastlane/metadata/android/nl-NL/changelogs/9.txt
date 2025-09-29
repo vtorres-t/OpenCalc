@@ -1,7 +1,0 @@
-Veranderingen:
-- Nieuwe pagina Over
-- Voeg een scheidingsteken toe voor het Amoled thema
-
-Opgelost:
-- Delectievakje kleur
-- App-naam (vertaald in EN & FR)

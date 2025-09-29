@@ -1,5 +1,0 @@
-Correzioni:
-- tan() non funziona bene
-- Cancellare un separatore delle migliaia fa saltare il cursore
-- Piazzamento delle parentesi all'interno dei calcoli
-- Problemi di grafica in modalità orizzontale per tablet superiori ai 10"

@@ -1,6 +1,0 @@
-Nieuw:
-- Tipknop
-
-Veranderingen:
-- Geschiedenis-indeling verbeterd
-- Bijwerken minteken

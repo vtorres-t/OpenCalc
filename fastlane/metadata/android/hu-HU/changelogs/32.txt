@@ -1,2 +1,0 @@
-Javítás:
-- Összeomlás kis képernyőkön és tableteken

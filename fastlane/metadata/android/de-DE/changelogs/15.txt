@@ -1,6 +1,0 @@
-Änderungen:
-- der Startbildschirm ist jetzt dunkel
-
-Fehlerbehebungen:
-- Tastatur Problem
-- Tastatur scrollt noch

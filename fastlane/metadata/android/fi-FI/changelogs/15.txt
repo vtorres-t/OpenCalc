@@ -1,6 +1,0 @@
-Muutokset:
-- Aloitusnäyttö on nyt tumma
-
-Korjaukset:
-- näppäimistöongelma
-- näppäimistö vierii edelleen

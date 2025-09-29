@@ -1,8 +1,0 @@
-Nieuw:
-- Spaanse vertaling
-
-Opgelost:
-- Toetsenbord reageert niet meer bij interactie met grote faculteiten 
-- Verkeerd laden van waarden uit geschiedenis
-- Resultaten met decimale komma laden uit geschiedenis verwijdert operatoren of crasht app
-- Precisie

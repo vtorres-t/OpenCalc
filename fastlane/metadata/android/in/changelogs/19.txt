@@ -1,8 +1,0 @@
-Tambahan: 
-- Toast saat Anda menyalin nilai
-
-Perbaikan: 
-- Mengikuti tema sistem yang mendukung Material You 
-- Meningkatkan dukungan untuk perangkat tablet 
-- Meningkatkan dukungan untuk ukuran layar yang kecil 
-- Ikon tidak muncul untuk versi dibawah Android 8

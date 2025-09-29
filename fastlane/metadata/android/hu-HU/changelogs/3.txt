@@ -1,8 +1,0 @@
-Új:
-- Rezgés
-
-Változás:
-- Kódjavítás
-
-Javítás:
-- A rendszer témájának követése az első indításkor

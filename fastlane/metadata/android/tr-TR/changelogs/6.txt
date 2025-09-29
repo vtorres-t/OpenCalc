@@ -1,2 +1,0 @@
-Değişiklikler:
-- Material You desteği eklendi (Teşekkürler @MahmoudRH)

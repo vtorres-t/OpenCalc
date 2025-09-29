@@ -1,6 +1,0 @@
-Nouveauté :
-- Bouton d'aide
-
-Changements :
-- Amélioration du format de l'historique
-- Modification du caractère de la soustraction

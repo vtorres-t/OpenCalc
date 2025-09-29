@@ -1,7 +1,0 @@
-Changement :
-- nouveautés sur les pages
-- ajout d'un séparateur pour le thème amoled
-
-Corrections :
-- couleur des cases à cocher
-- nom de l'application (traduit en anglais et en français)

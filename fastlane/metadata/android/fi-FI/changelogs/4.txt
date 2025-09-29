@@ -1,2 +1,0 @@
-Korjaukset:
-- Lisää värinät nappeihin joilla ei niitä ole

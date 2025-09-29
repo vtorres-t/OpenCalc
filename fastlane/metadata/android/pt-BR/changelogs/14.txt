@@ -1,6 +1,0 @@
-Novo:
-- Botão de dica
-
-Mudanças:
-- Melhorado o formato do histórico
-- Atualização do caractere de menos

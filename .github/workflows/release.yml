@@ -1,10 +1,12 @@
 name: Release
 
 on:
-    pull_request:
-        branches:
-            - main
-    workflow_dispatch: # Manual trigge
+  pull_request_target:
+    types:
+      - closed
+    branches:
+      - main
+  workflow_dispatch: # Manual trigge
 
 jobs:
     build:
@@ -46,6 +48,7 @@ jobs:
               run: ./gradlew lint
 
             - name: Generate App Version Name
+              id: version
               run: echo "VERSION_NAME=$(git describe --tags | sed 's/\(.*\)-/\1./' | sed 's/\(.*\)-/\1+/')" >> $GITHUB_ENV
                 
             - name: Bump Version
@@ -53,20 +56,20 @@ jobs:
               with:
                 gradlePath: app/build.gradle.kts
                 versionCode: ${{ github.run_number }}
-                versionName: ${{ env.VERSION_NAME }}
+                versionName: ${{ steps.version.outputs.VERSION_NAME }}
 
             - name: Build release APK
-              run: ./gradlew assembleRelease \
-                     -PSIGNING_KEY_ALIAS=$SIGNING_KEY_ALIAS \
-                     -PKEYSTORE_PASSWORD=$KEYSTORE_PASSWORD \
-                     -PKEYSTORE_FILE=app/key \
-                     -PSIGNING_KEY_PASSWORD=$SIGNING_KEY_PASSWORD
+              run: ./gradlew assembleRelease -PSIGNING_KEY_ALIAS=$SIGNING_KEY_ALIAS -PKEYSTORE_PASSWORD=$KEYSTORE_PASSWORD -PKEYSTORE_FILE=app/key -PSIGNING_KEY_PASSWORD=$SIGNING_KEY_PASSWORD
+            
+            - name: Get release file apk path
+              id: releaseApk
+              run: echo "apkfile=$(find app/build/outputs/apk/release/*.apk)" >> $GITHUB_OUTPUT
 
             - name: Upload Release APK
               uses: actions/upload-artifact@v4
               with:
                 name: release-apk
-                path: app/build/outputs/apk/release/app-release.apk
+                path: ${{ steps.releaseApk.outputs.apkfile }}
 
             - name: Generate Release Notes
               id: generate-release-notes
@@ -94,3 +97,14 @@ jobs:
                 prerelease: false
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Upload Release APK
+              id: upload_release_asset
+              uses: actions/upload-release-asset@v1.0.1
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                upload_url: ${{ steps.create_release.outputs.upload_url }}
+                asset_path: ${{ steps.releaseApk.outputs.apkfile }}
+                asset_name: OpenCalc_v.${{ env.VERSION_NAME }}.apk
+                asset_content_type: application/zip

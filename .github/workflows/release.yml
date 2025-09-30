@@ -56,7 +56,7 @@ jobs:
                 versionName: ${{ env.VERSION_NAME }}
 
             - name: Build release APK
-              run: ./gradlew clean publishRelease \
+              run: ./gradlew assembleRelease \
                      -PSIGNING_KEY_ALIAS=$SIGNING_KEY_ALIAS \
                      -PKEYSTORE_PASSWORD=$KEYSTORE_PASSWORD \
                      -PKEYSTORE_FILE=app/key \

@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.darkempire78.opencalculator"
         resourceConfigurations += listOf("es")
-        minSdk = 21
+        minSdk = 24
         targetSdk = 35
         versionCode = 54
         versionName = "3.2.1.1"

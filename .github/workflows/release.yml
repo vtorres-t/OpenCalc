@@ -9,7 +9,7 @@ on:
   workflow_dispatch: # Manual trigge
 
 env:
-  OPENCALC_VERSION: '3.2.1'
+  VERSION: '3.2.1'
 
 jobs:
     build:
@@ -55,7 +55,7 @@ jobs:
               with:
                 gradlePath: app/build.gradle.kts
                 versionCode: ${{ github.run_number }}
-                versionName: v${{ env.OPENCALC_VERSION }}.${{ github.run_number }}
+                versionName: v${{ env.VERSION }}.${{ github.run_number }}
 
             - name: Build release APK
               run: ./gradlew assembleRelease -PSIGNING_KEY_ALIAS=$SIGNING_KEY_ALIAS -PKEYSTORE_PASSWORD=$KEYSTORE_PASSWORD -PKEYSTORE_FILE=app/key -PSIGNING_KEY_PASSWORD=$SIGNING_KEY_PASSWORD
@@ -80,7 +80,7 @@ jobs:
                   const { data } = await github.rest.repos.generateReleaseNotes({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
-                    tag_name: 'v${{ env.OPENCALC_VERSION }}.${{ github.run_number }}',
+                    tag_name: 'v${{ env.VERSION }}.${{ github.run_number }}',
                     target_commitish: '${{ github.sha }}',
                     previous_tag_name: '${{ steps.previous-release.outputs.tag_name }}',
                   })
@@ -90,8 +90,8 @@ jobs:
               id: create_release
               uses: actions/create-release@v1
               with:
-                release_name: v${{ env.OPENCALC_VERSION }}.${{ github.run_number }}
-                tag_name: v${{ env.OPENCALC_VERSION }}.${{ github.run_number }}
+                release_name: v${{ env.VERSION }}.${{ github.run_number }}
+                tag_name: v${{ env.VERSION }}.${{ github.run_number }}
                 draft: false
                 prerelease: false
               env:
@@ -105,5 +105,5 @@ jobs:
               with:
                 upload_url: ${{ steps.create_release.outputs.upload_url }}
                 asset_path: ${{ steps.releaseApk.outputs.apkfile }}
-                asset_name: OpenCalc_v${{ env.OPENCALC_VERSION }}.${{ github.run_number }}.apk
+                asset_name: OpenCalc_v${{ env.VERSION }}.${{ github.run_number }}.apk
                 asset_content_type: application/zip

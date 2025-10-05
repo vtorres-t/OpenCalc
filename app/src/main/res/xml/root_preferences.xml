@@ -110,7 +110,7 @@
             app:title="@string/settings_formatting_precision"
             app:entries="@array/number_precision_entries"
             app:entryValues="@array/number_precision_values"
-            app:defaultValue="10"
+            app:defaultValue="5"
             app:useSimpleSummaryProvider="true"
             app:singleLineTitle="false"
             app:icon="@drawable/precision" />

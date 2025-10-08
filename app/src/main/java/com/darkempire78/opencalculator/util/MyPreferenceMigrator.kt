@@ -83,20 +83,4 @@ object MyPreferenceMigrator {
             ScientificModeTypes.OFF.ordinal
         )
     }
-
-    /**
-     * Helper function to safely retrieve the current scientific mode.
-     *
-     * @param sharedPreferences The SharedPreferences instance to read from
-     * @param key The preference key to read
-     * @return The current ScientificModeTypes enum value
-     */
-    fun getCurrentMode(sharedPreferences: SharedPreferences, key: String): ScientificModeTypes {
-        return try {
-            val ordinal = sharedPreferences.getInt(key, ScientificModeTypes.OFF.ordinal)
-            ScientificModeTypes.entries.getOrNull(ordinal) ?: ScientificModeTypes.OFF
-        } catch (e: Exception) {
-            ScientificModeTypes.OFF
-        }
-    }
 }

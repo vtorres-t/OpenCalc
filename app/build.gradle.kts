@@ -6,11 +6,14 @@ plugins {
 
 android {
     namespace = "com.darkempire78.opencalculator"
-    compileSdk = 35
+    compileSdk = 36
+
+    androidResources{
+        localeFilters.addAll(listOf("es"))
+    }
 
     defaultConfig {
         applicationId = "com.darkempire78.opencalculator"
-        resourceConfigurations += listOf("es")
         minSdk = 24
         targetSdk = 35
         versionCode = 54
@@ -19,11 +22,20 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release"){
+            storeFile = file("key")
+            storePassword = System.getenv("KEYSTORE_PASSWORD")
+            keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+            keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -48,9 +60,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+}
+
+kotlin{
+    jvmToolchain(8)
 }
 
 dependencies {

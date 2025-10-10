@@ -1,5 +1,6 @@
 import android.content.SharedPreferences
 import com.darkempire78.opencalculator.util.ScientificModeTypes
+import androidx.core.content.edit
 
 /**
  * Handles migration of SharedPreferences values between different data types.
@@ -62,10 +63,10 @@ object MyPreferenceMigrator {
             "Invalid ordinal value $value for ScientificModeTypes"
         }
 
-        sharedPreferences.edit()
-            .remove(key) // Remove old value first
-            .putInt(key, value)
-            .apply()
+        sharedPreferences.edit {
+            remove(key) // Remove old value first
+                .putInt(key, value)
+        }
         return value
     }
 
@@ -82,21 +83,5 @@ object MyPreferenceMigrator {
             key,
             ScientificModeTypes.OFF.ordinal
         )
-    }
-
-    /**
-     * Helper function to safely retrieve the current scientific mode.
-     *
-     * @param sharedPreferences The SharedPreferences instance to read from
-     * @param key The preference key to read
-     * @return The current ScientificModeTypes enum value
-     */
-    fun getCurrentMode(sharedPreferences: SharedPreferences, key: String): ScientificModeTypes {
-        return try {
-            val ordinal = sharedPreferences.getInt(key, ScientificModeTypes.OFF.ordinal)
-            ScientificModeTypes.entries.getOrNull(ordinal) ?: ScientificModeTypes.OFF
-        } catch (e: Exception) {
-            ScientificModeTypes.OFF
-        }
     }
 }

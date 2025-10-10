@@ -1,14 +1,11 @@
 package com.darkempire78.opencalculator.activities
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import com.darkempire78.opencalculator.BuildConfig
 import com.darkempire78.opencalculator.MyPreferences
 import com.darkempire78.opencalculator.R
@@ -53,7 +50,7 @@ class AboutActivity : AppCompatActivity() {
         binding.aboutGithub.setOnClickListener {
             val browserIntent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("https://github.com/vtorres-t/OpenCalc")
+                "https://github.com/vtorres-t/OpenCalc".toUri()
             )
             startActivity(browserIntent)
         }

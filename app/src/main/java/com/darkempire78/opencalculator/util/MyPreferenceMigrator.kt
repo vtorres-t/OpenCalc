@@ -1,5 +1,6 @@
 import android.content.SharedPreferences
 import com.darkempire78.opencalculator.util.ScientificModeTypes
+import androidx.core.content.edit
 
 /**
  * Handles migration of SharedPreferences values between different data types.
@@ -62,10 +63,10 @@ object MyPreferenceMigrator {
             "Invalid ordinal value $value for ScientificModeTypes"
         }
 
-        sharedPreferences.edit()
-            .remove(key) // Remove old value first
-            .putInt(key, value)
-            .apply()
+        sharedPreferences.edit {
+            remove(key) // Remove old value first
+                .putInt(key, value)
+        }
         return value
     }
 

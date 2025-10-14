@@ -12,7 +12,7 @@ material = "1.12.0"
 preferenceKtx = "1.2.1"
 kotlin = "2.0.0"
 runtime = "1.6.8"
-gradle = "8.10.2"
+agp = "8.8.0"
 
 [libraries]
 androidslidinguppanel = { module = "com.github.hannesa2:AndroidSlidingUpPanel", version.ref = "androidslidinguppanel" }
@@ -29,6 +29,6 @@ junit = { module = "junit:junit", version.ref = "junit" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "gradle" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.darkempire78.opencalculator"
-    compileSdk = 36
+    compileSdk = 35
 
     androidResources{
         localeFilters.addAll(listOf("es"))

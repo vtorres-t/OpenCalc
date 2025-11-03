@@ -34,14 +34,6 @@ class HistoryAdapter(
             holder.bind(history[position], position)
         }
 
-        fun appendHistory(historyList: List<History>) {
-            this.history.addAll(historyList)
-            notifyItemRangeInserted(
-                this.history.size,
-                historyList.size - 1
-            )
-        }
-
         fun appendOneHistoryElement(history: History) {
             this.history.add(history)
             // Update the last 2 elements to avoid to have the same date and bar separator

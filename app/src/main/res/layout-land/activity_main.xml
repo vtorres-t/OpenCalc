@@ -611,7 +611,7 @@
         android:layout_marginTop="4dp"
         style="@style/RobotoFontCondensedMedium"
         android:textSize="20sp"
-        android:text="DEG"
+        android:text="@string/deg"
         android:textColor="?attr/text_third_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

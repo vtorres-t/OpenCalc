@@ -65,7 +65,7 @@ class Expression {
                         val subexpression = result.substring(subexpressionStart + 1, i)
                         if (subexpression.contains('%')) {
                             val processedSubexpression = getPercentString(subexpression)
-                            result = result.substring(0, subexpressionStart + 1) + processedSubexpression + result.substring(i)
+                            result = result.take(subexpressionStart + 1) + processedSubexpression + result.substring(i)
                             i = 0 // Restart to process modified expression
                             processedIndices.clear() // Reset processed indices for new expression
                             continue@loop
@@ -91,16 +91,17 @@ class Expression {
                                 syntax_error = true
                                 return result
                             }
-                            val operatorPos = result.substring(0, j + 1).lastIndexOfAny(charArrayOf('+', '-', '*', '/'))
+                            val operatorPos = result.take(j + 1)
+                                .lastIndexOfAny(charArrayOf('+', '-', '*', '/'))
                             if (operatorPos < 0) {
                                 // Standalone factorial percentage, e.g., 5!%
-                                result = result.substring(0, j + 1) + "(($factorialBase!)/100)" + result.substring(i + 1)
+                                result = result.take(j + 1) + "(($factorialBase!)/100)" + result.substring(i + 1)
                             } else if (result[operatorPos] == '*' || result[operatorPos] == '/') {
                                 // For * or /, wrap the percentage part
-                                result = result.substring(0, operatorPos + 1) + "(($factorialBase!)/100)" + result.substring(i + 1)
+                                result = result.take(operatorPos + 1) + "(($factorialBase!)/100)" + result.substring(i + 1)
                             } else {
                                 // For + or -, apply percentage relative to the base
-                                val base = result.substring(0, operatorPos).trim()
+                                val base = result.take(operatorPos).trim()
                                 if (base.isEmpty()) {
                                     syntax_error = true
                                     return result
@@ -122,13 +123,14 @@ class Expression {
                                 return result
                             }
                             val subexpression = result.substring(j + 1, i - 1)
-                            val operatorPos = result.substring(0, j).lastIndexOfAny(charArrayOf('+', '-', '*', '/'))
+                            val operatorPos = result.take(j)
+                                .lastIndexOfAny(charArrayOf('+', '-', '*', '/'))
                             if (operatorPos < 0) {
-                                result = result.substring(0, j) + "(($subexpression)/100)" + result.substring(i + 1)
+                                result = result.take(j) + "(($subexpression)/100)" + result.substring(i + 1)
                             } else if (result[operatorPos] == '*' || result[operatorPos] == '/') {
-                                result = result.substring(0, operatorPos + 1) + "(($subexpression)/100)" + result.substring(i + 1)
+                                result = result.take(operatorPos + 1) + "(($subexpression)/100)" + result.substring(i + 1)
                             } else {
-                                val base = result.substring(0, operatorPos).trim()
+                                val base = result.take(operatorPos).trim()
                                 if (base.isEmpty()) {
                                     syntax_error = true
                                     return result
@@ -141,23 +143,24 @@ class Expression {
                             while (start >= 0 && (result[start].isDigit() || result[start] == '.')) {
                                 start -= 1
                             }
-                            val operatorPos = result.substring(0, start + 1).lastIndexOfAny(charArrayOf('+', '-', '*', '/'))
+                            val operatorPos = result.take(start + 1)
+                                .lastIndexOfAny(charArrayOf('+', '-', '*', '/'))
                             if (operatorPos < 0) {
                                 val number = result.substring(start + 1, i)
                                 if (number.isEmpty()) {
                                     syntax_error = true
                                     return result
                                 }
-                                result = result.substring(0, start + 1) + "($number/100)" + result.substring(i + 1)
+                                result = result.take(start + 1) + "($number/100)" + result.substring(i + 1)
                             } else if (result[operatorPos] == '*' || result[operatorPos] == '/') {
                                 val number = result.substring(operatorPos + 1, i)
                                 if (number.isEmpty()) {
                                     syntax_error = true
                                     return result
                                 }
-                                result = result.substring(0, operatorPos + 1) + "($number/100)" + result.substring(i + 1)
+                                result = result.take(operatorPos + 1) + "($number/100)" + result.substring(i + 1)
                             } else {
-                                val base = result.substring(0, operatorPos).trim()
+                                val base = result.take(operatorPos).trim()
                                 val number = result.substring(operatorPos + 1, i)
                                 if (base.isEmpty() || number.isEmpty()) {
                                     syntax_error = true
@@ -283,7 +286,6 @@ class Expression {
         var cleanCalculation = calculation
         var parenthesisOpened = 0
 
-        val cleanCalculationLength = cleanCalculation.length
         var i = 0
 
         /*
@@ -328,7 +330,7 @@ class Expression {
                     // If the previous character is a parenthesis
                     if (cleanCalculation[i-1] == ')') {
                         // Remove the "!"
-                        cleanCalculation = cleanCalculation.substring(0, i) + cleanCalculation.substring(i+1)
+                        cleanCalculation = cleanCalculation.take(i) + cleanCalculation.substring(i+1)
 
                         var j = i
                         while (j > 0) {
@@ -353,7 +355,7 @@ class Expression {
                         }
                     } else {
                         // If the previous character is not a parenthesis, add one
-                        cleanCalculation = cleanCalculation.substring(0, i) + ')' + cleanCalculation.substring(i + 1)
+                        cleanCalculation = cleanCalculation.take(i) + ')' + cleanCalculation.substring(i + 1)
 
                         // Store i in a temporary variable
                         val tmp = i

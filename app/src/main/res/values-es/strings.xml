@@ -70,4 +70,5 @@
     <string name="parenthesesDesc">paréntesis</string>
     <string name="clearDesc">limpiar</string>
     <string name="percentDesc">porcentaje</string>
+    <string name="deg">DEG</string>
 </resources>

@@ -1,5 +1,0 @@
-Nuevo:
-- Mosaico de ajustes rápidos
-
-Correcciones:
-- Notificaciones emergentes molestas

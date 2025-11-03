@@ -1,7 +1,0 @@
-Cambios:
-- nueva página acerca de
-- añadir separador para el tema amoled
-
-Correcciones:
-- color de la casilla de verificación
-- nombre de la aplicación (traducido en EN y FR)

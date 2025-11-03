@@ -1,2 +1,0 @@
-變更：
-- 增加 Material You 支援（感謝 @MahmoudRH）

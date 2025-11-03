@@ -1,20 +1,16 @@
 package com.darkempire78.opencalculator.activities
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import com.darkempire78.opencalculator.BuildConfig
 import com.darkempire78.opencalculator.MyPreferences
 import com.darkempire78.opencalculator.R
 import com.darkempire78.opencalculator.Themes
 import com.darkempire78.opencalculator.databinding.ActivityAboutBinding
-import com.darkempire78.opencalculator.dialogs.DonationDialog
 
 class AboutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAboutBinding
@@ -50,61 +46,11 @@ class AboutActivity : AppCompatActivity() {
             finish()
         }
 
-        // Translate
-        binding.aboutTranslate.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://hosted.weblate.org/engage/opencalc/")
-            )
-            startActivity(browserIntent)
-        }
-
-        // Rate
-        binding.aboutRate.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://play.google.com/store/apps/details?id=com.darkempire78.opencalculator")
-            )
-            startActivity(browserIntent)
-        }
-
-        // Donation
-        /*binding.aboutDonate.setOnClickListener {
-            DonationDialog(this, layoutInflater).openDonationDialog()
-        }*/
-
         // Github
         binding.aboutGithub.setOnClickListener {
             val browserIntent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("https://github.com/Darkempire78/OpenCalc")
-            )
-            startActivity(browserIntent)
-        }
-
-        // Discord
-        binding.aboutDiscord.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://discord.com/invite/sPvJmY7mcV")
-            )
-            startActivity(browserIntent)
-        }
-
-        // Privacy policy
-        binding.aboutPrivacyPolicy.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://gist.githubusercontent.com/clementwzk/1688314e8b75d5d32ac0503a97ec77a0/raw/2dcc4cf13f9755405e486e51e4658626c289986a/OpenCalc%2520Privacy%2520Policy.md")
-            )
-            startActivity(browserIntent)
-        }
-
-        // License
-        binding.aboutLicense.setOnClickListener {
-            val browserIntent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://github.com/Darkempire78/OpenCalc/blob/main/LICENSE")
+                "https://github.com/vtorres-t/OpenCalc".toUri()
             )
             startActivity(browserIntent)
         }

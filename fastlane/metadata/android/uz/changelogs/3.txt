@@ -1,8 +1,0 @@
-Yangi:
-- Tebranish tizimi
-
-O'zgarishlar:
-- Kodni takomillashtirish
-
-Tuzatishlar:
-- Birinchi ishga tushirishda tizim mavzusiga rioya qiling

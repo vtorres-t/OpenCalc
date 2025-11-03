@@ -1,5 +1,0 @@
-O'zgarishlar:
-- katta raqamlar uchun ajratuvchilar qo'shing
-- italyancha tarjimani qo'shing
-- arabcha tarjimani qo'shing
-- turkcha tarjimani qo'shing

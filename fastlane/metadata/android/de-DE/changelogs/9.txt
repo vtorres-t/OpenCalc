@@ -1,7 +1,0 @@
-Änderungen:
-- Neue Über-Seite
-- Trennlinie für das AMOLED-Design
-
-Fehlerbehebungen:
-- Checkbox-Farbe
-- App-Name (übersetzt in EN u. FR)

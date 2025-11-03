@@ -1,2 +1,0 @@
-Correzioni:
-- Aggiunta vibrazione ai pulsanti che non ce l'hanno

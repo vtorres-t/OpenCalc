@@ -1,6 +1,0 @@
-Novo:
-- Ícone temático
-
-Mudanças:
-- Traduções atualizadas
-- Limpa o ecrã quando um número é pressionado após pressionar igual

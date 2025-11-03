@@ -1,3 +1,0 @@
-Neu:
-- AMOLED-Design
-- Aussehen folgt Systemdesign

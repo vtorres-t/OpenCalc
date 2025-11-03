@@ -1,9 +1,0 @@
-Muutokset:
-- Saksan käännös
-- Venäjän käännös
-- Kreikan käännös
-- Hindin käännös
-- Azerbaidžanin käännös
-
-Korjaukset:
-- Epämatemaattinen prosentti

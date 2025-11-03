@@ -1,3 +1,0 @@
-Yangi:
-- Amoled mavzusi
-- Tizim mavzusiga rioya qiling

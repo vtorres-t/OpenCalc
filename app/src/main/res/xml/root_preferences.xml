@@ -5,8 +5,7 @@
     <PreferenceCategory
         app:title="@string/settings_category_general"
         app:color="?attr/text_color">
-        <!--app:iconSpaceReserved="false"-->
-
+        
         <Preference
             android:id="@+id/settings_select_app_language"
             app:key="darkempire78.opencalculator.APP_LANGUAGE"
@@ -100,15 +99,6 @@
             app:summary="@string/settings_general_backspace_desc"
             app:widgetLayout="@drawable/material_switch"/>
 
-
-        <!-- <ListPreference
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:defaultValue="reply"
-            app:useSimpleSummaryProvider="true"/> -->
-
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -120,7 +110,7 @@
             app:title="@string/settings_formatting_precision"
             app:entries="@array/number_precision_entries"
             app:entryValues="@array/number_precision_values"
-            app:defaultValue="10"
+            app:defaultValue="5"
             app:useSimpleSummaryProvider="true"
             app:singleLineTitle="false"
             app:icon="@drawable/precision" />
@@ -198,21 +188,4 @@
             app:widgetLayout="@drawable/material_switch" />
 
     </PreferenceCategory>
-
-    <!--<PreferenceCategory
-        app:title="@string/sync_header">
-
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title"/>
-
-        <SwitchPreferenceCompat
-            app:key="attachment"
-            app:title="@string/attachment_title"
-            app:summaryOn="@string/attachment_summary_on"
-            app:summaryOff="@string/attachment_summary_off"
-            app:dependency="sync"/>
-
-    </PreferenceCategory> -->
-
 </PreferenceScreen>

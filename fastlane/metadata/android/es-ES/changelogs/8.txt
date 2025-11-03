@@ -1,2 +1,0 @@
-Correcciones:
-- Arreglado el fallo en los números grandes

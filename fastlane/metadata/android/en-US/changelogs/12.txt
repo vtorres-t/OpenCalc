@@ -1,8 +1,0 @@
-New:
-- History
-
-Changes:
-- Optimisation
-
-Fixes:
-- Result display issues

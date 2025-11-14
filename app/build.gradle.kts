@@ -16,7 +16,7 @@ android {
         applicationId = "com.darkempire78.opencalculator"
         minSdk = 24
         targetSdk = 35
-        versionCode = 54
+        versionCode = 55
         versionName = "3.2.1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

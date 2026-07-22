@@ -3,7 +3,7 @@
 # OpenCalc
 
 ### A simple and beautiful calculator for Android.
-#### Downloaded more than 250 000 times.
+#### Downloaded more than 300 000 times.
 
 <a href="https://github.com/vtorres-t/OpenCalc/releases/latest">
       <img alt="Latest release" src="https://img.shields.io/github/v/release/Darkempire78/OpenCalc.svg?logo=github&style=for-the-badge">
